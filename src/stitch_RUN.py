@@ -92,13 +92,22 @@ class Stitch:
 
         self.__multi_errortxt = 'Multiplier input must be greater than 0!'
 
+        # Creates label for select ImageJ.exe prompt
+        self.__magnification_vals = Label(self.__window,
+                                   text='Magnifications and multiplier values '
+                                        '(Aurox):\n '
+                                        '10x - 1.56\n '
+                                        '20x - 3.1\n '
+                                        '63x - 4.9462') \
+            .grid(row=11, column=1)
+
         # Creates the run button for running the simulator
         Button(self.__window, text='Run', command=self.stitch_away) \
-            .grid(row=11, column=1, sticky=E)
+            .grid(row=12, column=1, sticky=E)
 
         # Creates button for quitting the stitcher
         Button(self.__window, text='Quit', command=self.quit_func) \
-            .grid(row=11, column=2, sticky=W)
+            .grid(row=12, column=2, sticky=W)
 
         # Adds the Stitch image
         Img = PhotoImage(file=self.__img_file_loc)
