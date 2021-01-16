@@ -73,17 +73,23 @@ def ome_checker(aurox_dir_path):
         Returns the path of the companion.ome file.
     """
     if not len(os.listdir(aurox_dir_path)) == 0:
+        logging.info("Number of files in " + aurox_dir_path + "is" + len(os.listdir(aurox_dir_path)))
         for file in os.listdir(aurox_dir_path):
             if file.endswith("companion.ome"):
+                logging.info(
+                    "companion.ome file found.")
                 c_ome_p = os.path.join(aurox_dir_path, file)
                 c_ome_path = c_ome_p.replace("\\", "//")
                 found_ome = True
                 return c_ome_path, found_ome
             else:
+                logging.info(
+                    "No file ending in companion.ome in" + aurox_dir_path)
                 c_ome_path = ""
                 found_ome = False
                 return c_ome_path, found_ome
     else:
+        logging.info("No files detected in" + aurox_dir_path)
         c_ome_path = ""
         found_ome = False
         return c_ome_path, found_ome
@@ -464,6 +470,7 @@ def main(root_dir_path):
                         format='%(asctime)s %(levelname)-8s %(message)s',
                         level=logging.INFO, datefmt='%d-%m-%Y %H:%M:%S')
 
+    logging.info(py_file_loc)
     logging.info('Searching for tiff series in: %s' % root_dir_path)
 
     # Uses the passed parameters from the GUI to do boolean checks.
