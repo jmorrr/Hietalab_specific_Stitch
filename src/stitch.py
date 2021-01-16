@@ -73,7 +73,6 @@ def ome_checker(aurox_dir_path):
         Returns the path of the companion.ome file.
     """
     if not len(os.listdir(aurox_dir_path)) == 0:
-        logging.info("Number of files in " + aurox_dir_path + "is" + len(os.listdir(aurox_dir_path)))
         for file in os.listdir(aurox_dir_path):
             if file.endswith("companion.ome"):
                 logging.info(
