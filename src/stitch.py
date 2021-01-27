@@ -419,8 +419,6 @@ def ij_macro_processor(fus_tiffs_dict, py_file_loc):
 
     for key in fus_tiffs_dict:
 
-        paths_l = [key, fus_tiffs_dict[key][0]]
-
         if fus_tiffs_dict[key][0] == '':
             logging.info('Companion file not available for' + key)
             logging.info('Running imageJ macro on ' + key)
@@ -459,7 +457,6 @@ def ome_transfer(root_dir_path):
                             shutil.move(ome_src, ome_p)
                 else:
                     logging.info('No leftover companion.ome files')
-
 
 
 def main(root_dir_path):
