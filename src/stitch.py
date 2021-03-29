@@ -75,23 +75,22 @@ def ome_checker(aurox_dir_path):
 
     if not len(os.listdir(aurox_dir_path)) == 0:
         logging.info(os.listdir(aurox_dir_path))
-        result = [x for x in os.listdir(aurox_dir_path) if x.endswith('companion.ome')]
-        for file in result:
-            if file.endswith("companion.ome"):
-                logging.info(file)
-                logging.info(
-                    "companion.ome file found.")
-                c_ome_p = os.path.join(aurox_dir_path, file)
+        result = [file for file in os.listdir(aurox_dir_path) if file.endswith('companion.ome')]
+        if not len(result) == 0:
+            for omefile in result:
+                logging.info(omefile)
+                logging.info("companion.ome file found.")
+                c_ome_p = os.path.join(aurox_dir_path, omefile)
                 c_ome_path = c_ome_p.replace("\\", "//")
                 logging.info("Companion file path: " + c_ome_path)
                 found_ome = True
                 return c_ome_path, found_ome
-            else:
-                logging.info(
-                    "No file ending in companion.ome in " + aurox_dir_path)
-                c_ome_path = ""
-                found_ome = False
-                return c_ome_path, found_ome
+        else:
+            logging.info(
+                "No file ending in companion.ome in " + aurox_dir_path)
+            c_ome_path = ""
+            found_ome = False
+            return c_ome_path, found_ome
     else:
         logging.info("No files detected in " + aurox_dir_path)
         c_ome_path = ""
